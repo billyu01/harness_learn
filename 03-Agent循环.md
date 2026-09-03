@@ -62,6 +62,8 @@ DSH 把循环拆成多个插件，循环中的策略变成独立的包：
 
 ## 五、我们如何设计：带钩子的循环
 
+> 下面代码里的 `ToolRegistry` 是「工具注册表」，正式定义在第 4 章。这里只需知道：`tools.list()` 拿工具 schema 喂给模型，`tools.run(name, args)` 执行工具——循环通过这两个方法间接使用工具，不关心工具内部实现。
+
 ```ts
 interface LoopHooks {
   beforeTool?: (call: ToolCall) => Promise<void>          // 权限门（第 7 章）
